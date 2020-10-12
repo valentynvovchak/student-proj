@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="52e53849-39cf-454c-b9d0-594f85c2a6a3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitexcludes" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/Pipfile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitexcludes" beforeDir="false" afterPath="$PROJECT_DIR$/.gitexcludes" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -25,6 +27,7 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.lookFeel" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -37,7 +40,8 @@
       <option name="presentableId" value="Default" />
       <updated>1602486997939</updated>
       <workItem from="1602487000186" duration="21000" />
-      <workItem from="1602487098263" duration="1354000" />
+      <workItem from="1602487098263" duration="2862000" />
+      <workItem from="1602501270135" duration="764000" />
     </task>
     <servers />
   </component>
@@ -53,5 +57,9 @@
       <screen x="67" y="27" width="1853" height="1053" />
     </state>
     <state x="776" y="310" width="424" height="484" key="FileChooserDialogImpl/67.27.1853.1053@67.27.1853.1053" timestamp="1602487018440" />
+    <state x="482" y="187" key="SettingsEditor" timestamp="1602501511780">
+      <screen x="67" y="27" width="1853" height="1053" />
+    </state>
+    <state x="482" y="187" key="SettingsEditor/67.27.1853.1053@67.27.1853.1053" timestamp="1602501511780" />
   </component>
 </project>
