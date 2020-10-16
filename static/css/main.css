@@ -1,0 +1,42 @@
+/* GLOBAL STYLES */
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+
+
+/* All alerts from js */
+.alert {
+/*
+    Відстань зверху 10px
+    Відстань справа 0px
+    Відстань знизу 5px
+    Відстань зліва 0px
+*/
+    margin: 10px 0 5px 0;
+}
+
+
+#footer {
+    /* задаємо верхню межу елемента: ширина лінії, тип лінії, колір лінії */
+
+    border-top: 1px solid #dee2e6;
+    /* задаємо внутрішню відстань елемента до верхнього краю */
+
+    padding-top: 10px;
+}
+
+/* Groups Selector */
+#group-selector {
+    margin-top: 10px;
+}
+
+#group-selector label {
+    line-height: 37px;
+    margin-right: 10px;
+}
+
+/* Table Styles */
+.table td {
+    vertical-align: middle;
+}
