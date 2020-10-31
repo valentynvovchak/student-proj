@@ -4,3 +4,5 @@
 .idea/
 ../.idea/
 ./idea/
+static/css/test.css
+static/test.html
