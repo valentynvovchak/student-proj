@@ -5,8 +5,10 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 #group-row, #name-row,
-#last-name-row, #birthday-row{
+#last-name-row, #birthday-row,
+#text-row{
     align-items: center;
+    font-family: inherit;
 }
 
 
@@ -14,10 +16,6 @@ h1, h2, h3, h4, h5, h6 {
     max-width: 212px;
 }
 
-#photo-info-label{
-    /*border: 1px solid grey;*/
-    /*height: 10px;*/
-}
 
 #input-group-prepend {
     border: 1px solid lightgray;
@@ -30,9 +28,15 @@ h1, h2, h3, h4, h5, h6 {
 
 #birthday {
     min-width: 210px;
+
 }
 
+#text:focus{
+    box-shadow: grey 3px 3px 10px;
+}
 
-
-
+.container {
+    /*max-width: 700px;*/
+    max-width: 720px;
+}
 
