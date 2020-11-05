@@ -1,0 +1,81 @@
+{% extends 'students/base.html' %}
+
+{% load static %}
+
+
+{% block meta_title %}Групи{% endblock meta_title %}
+
+
+{% block extra_css %}{% endblock extra_css %}
+
+{% comment "Group_Alert" %}
+    <!--Status Message !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!-->
+    <div class="alert alert-success" role="alert">Групу успішно додано.</div>
+{% endcomment %}
+
+{% block title %}Список Груп{% endblock title %}
+
+
+{% block active_3 %}active{% endblock active_3 %}
+
+
+{% block content %}
+    <!--Add Student Button-->
+    <a class="btn btn-primary" href="{% url 'groups_add' %}" role="button">Додати Групу</a>
+
+    <!--Start Students Listing-->
+    <div>
+        <table class="table table-hover table-striped">
+            <thead>
+            <tr>
+                <th><a href="">№</a></th>
+                <th><a href="#">Назва</a></th>
+                <th><a href="#">Староста</a></th>
+                <th>Дії</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for group in groups %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><a href="{% url 'groups_edit' group.id %}" title="Редагувати">{{ group.name }}</a></td>
+                    <td><a href="#" title="Редагувати">{{ group.leader }}</a></td>
+                    <td>
+                        <div class="dropdown">
+                            <button class="btn btn-primary dropdown-toggle" type="button"
+                                    data-toggle="dropdown">
+                                Дія
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="{% url 'groups_edit' group.id %}">Редагувати</a>
+                                <a class="dropdown-item" href="{% url 'groups_delete' group.id %}">Видалити</a>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        <!--PAGINATION-->
+        <nav aria-label="Page navigation">
+            <ul class="pagination">
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li>
+                <li class="page-item">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <!--END PAGINATION-->
+    </div>
+    <!-- End Students Listing -->
+{% endblock content %}
