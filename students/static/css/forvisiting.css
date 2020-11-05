@@ -1,0 +1,80 @@
+/* GLOBAL STYLES */
+
+h1, h2, h3, h4, h5, h6 {
+    font-weight: bold;
+}
+
+
+/* All alerts from js */
+.alert {
+    /*
+        Відстань зверху 10px
+        Відстань справа 0px
+        Відстань знизу 5px
+        Відстань зліва 0px
+    */
+    margin: 10px 0 5px 0;
+}
+
+
+#footer {
+    /* задаємо верхню межу елемента: ширина лінії, тип лінії, колір лінії */
+
+    border-top: 1px solid #dee2e6;
+    /* задаємо внутрішню відстань елемента до верхнього краю */
+
+    padding-top: 10px;
+}
+
+/* Groups Selector */
+#group-selector {
+    margin-top: 10px;
+}
+
+#group-selector label {
+    line-height: calc(1.5em + .75rem + 2px);
+    margin-right: 10px;
+}
+
+/* Table Styles */
+.table td {
+    vertical-align: middle;
+    padding: 0.5rem;
+}
+
+
+/* Button Styles */
+.btn-primary {
+    margin-bottom: 15px;
+}
+
+/*Navs*/
+.calendarnav {
+    margin-bottom: 15px;
+}
+
+.calendarnav strong {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+/*Tables*/
+.table_horizontal th, .table_horizontal td{
+    text-align: center;
+}
+
+/*STRIP*/
+
+
+.bigger {
+    font-size: 16px;
+}
+
+th {
+    font-size: 14px;
+}
+
+.table th {
+    padding: 0.1rem;
+    vertical-align: middle;
+}

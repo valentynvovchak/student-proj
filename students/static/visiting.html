@@ -1,0 +1,289 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Сервіс Обліку Студентів</title>
+    <meta name="description"
+          content="Система Обліку Студентів Навчального Закладу">
+
+    <!--Include Styles-->
+
+    <link rel="stylesheet"
+          href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+          integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
+          crossorigin="anonymous">
+
+    <!--    <style type="text/css">.col-sm-12, .col-sm-4, .col-sm-8 {border: 1px solid red;} </style>-->
+    <link rel="stylesheet" href="./css/forvisiting.css">
+</head>
+<body>
+
+    <!-- Start Container -->
+    <div class="container">
+
+        <!-- Start Header -->
+        <div class="row mt-3" id="header">
+
+            <!-- Logo -->
+            <div class="col-sm-8">
+                <h1>Сервіс обліку Студентів</h1>
+            </div>
+
+            <!-- Group Selector -->
+            <div class="col-sm-4 d-flex" id="group-selector">
+                <label for="group"><span>Група:</span></label>
+                <select class="custom-select" name="group" id="group">
+                    <option value="">Усі Студенти</option>
+                    <option value="">ФЕІ-21, Старжевський Денис</option>
+                    <option value="">ФЕІ-21, Вовчак Валентин</option>
+                </select>
+            </div>
+        </div>
+        <!-- End Header  -->
+
+
+        <!-- Start SubHeader -->
+        <div class="row" id="sub-header">
+            <div class="col-sm-12">
+                <ul class="nav nav-tabs">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Студенти</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" href="#">Відвідування</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Групи</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <!-- End SubHeader -->
+
+
+
+        <!-- Start Main Page Content -->
+        <div class="row" id="content-columns">
+
+            <div class="col-sm-12" id="content-column">
+
+                <!--SubHead-->
+                <h2 class="my-3">Облік Відвідування</h2>
+
+                <!--Date-->
+                <nav class="calendarnav row justify-content-md-center">
+                    <a class="calendarnav-previous" href="#">&#8592;</a>
+                    <strong>November 2020</strong>
+                    <a class="calendarnav-next" href="#">&#8594;</a>
+                </nav>
+
+                <div class="table_horizontal">
+                    <table class="table table-hover table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th class="bigger">#</th>
+                            <th class="bigger">Студент</th>
+                            <th>Mo<br>1</th>
+                            <th>Tu<br>2</th>
+                            <th>We<br>3</th>
+                            <th>Th<br>4</th>
+                            <th>Fr<br>5</th>
+                            <th>Sa<br>6</th>
+                            <th>Su<br>7</th>
+                            <th>Mo<br>8</th>
+                            <th>Tu<br>9</th>
+                            <th>We<br>10</th>
+                            <th>Th<br>11</th>
+                            <th>Fr<br>12</th>
+                            <th>Sa<br>13</th>
+                            <th>Su<br>14</th>
+                            <th>Mo<br>15</th>
+                            <th>Tu<br>16</th>
+                            <th>We<br>17</th>
+                            <th>Th<br>18</th>
+                            <th>Fr<br>19</th>
+                            <th>Sa<br>20</th>
+                            <th>Su<br>21</th>
+                            <th>Mo<br>22</th>
+                            <th>Tu<br>23</th>
+                            <th>We<br>24</th>
+                            <th>Th<br>25</th>
+                            <th>Fr<br>26</th>
+                            <th>Sa<br>27</th>
+                            <th>Su<br>28</th>
+                            <th>Mo<br>29</th>
+                            <th>Tu<br>30</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td><a href="#">Валентин Вовчак</a></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                        </tr>
+
+                        <tr>
+                            <td>2</td>
+                            <td><a href="#">Денис Старжевський</a></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                        </tr>
+
+                        <tr>
+                            <td>3</td>
+                            <td><a href="#">Ельвіра Громова</a></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox" checked></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                 </div>
+
+                <!--PAGINATION-->
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item"><a class="page-link" href="#">4</a></li>
+                        <li class="page-item"><a class="page-link" href="#">5</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <!--END PAGINATION-->
+
+            </div>
+            <!--End Main Page Content-->
+
+        </div>
+        <!-- End Main Page Content -->
+
+
+
+
+        <!-- Start Footer -->
+        <div class="row" id="footer">
+            <div class="col-sm-12">
+                2020 Сервіс Обліку Студентів
+            </div>
+        </div>
+        <!-- End Footer -->
+
+
+    </div>
+    <!-- End Container -->
+
+
+
+    <!--Javascript Section-->
+
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+            crossorigin="anonymous"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+            crossorigin="anonymous"></script>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+            crossorigin="anonymous"></script>
+</body>
+</html>

@@ -7,7 +7,27 @@ from django.http import HttpResponse, Http404
 #  Views for Students
 
 def students_list(request):
-    return render(request, 'students/students_list.html', {})
+    students = (
+        {'id': 1,
+         'first_name': 'Валентин',
+         'last_name': 'Вовчак',
+         'number': 3119036,
+         'image': 'img/Valya.jpg'},
+
+        {'id': 2,
+         'first_name': 'Денис',
+         'last_name': 'Старжевський',
+         'number': 3119088,
+         'image': 'img/Denys.jpg'},
+
+        {'id': 3,
+         'first_name': 'Ельвіра',
+         'last_name': 'Громова',
+         'number': 3119101,
+         'image': 'img/Elya.jpg'}
+    )
+
+    return render(request, 'students/students_list.html', {'students': students})
 
 
 def students_add(request):
