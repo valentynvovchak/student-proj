@@ -31,11 +31,14 @@
     <!-- Start Header -->
     <div class="row mt-3" id="header">
 
+        {% block change_logo %}
         <!-- Logo -->
         <div class="col-sm-8">
             <h1>Сервіс Обліку Студентів</h1>
         </div>
+        {% endblock change_logo %}
 
+        {% block change_stud_menu %}
         <!-- Group Selector -->
         <div class="col-sm-4 d-flex" id="group-selector">
             <label for="group"><strong>Група:</strong></label>
@@ -45,6 +48,7 @@
                 <option value="">ФЕІ-21, Вовчак Валентин</option>
             </select>
         </div>
+        {% endblock change_stud_menu %}
     </div>
     <!-- End Header  -->
 
@@ -94,6 +98,7 @@
 
     <!-- End Main Page Content -->
 
+    {% block change_footer %}
     <!-- Start Footer -->
     <div class="row" id="footer">
         <div class="col-sm-12">
@@ -101,6 +106,7 @@
         </div>
     </div>
     <!-- End Footer -->
+    {% endblock change_footer %}
 
 </div>
 <!-- End Container -->

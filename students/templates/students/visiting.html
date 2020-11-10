@@ -1,0 +1,112 @@
+{% extends 'students/base.html' %}
+
+{% load static %}
+
+
+{% block meta_title %}Відвідування{% endblock meta_title %}
+
+
+{% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/forvisiting.css' %}">
+{% endblock extra_css %}
+
+
+
+{% block title %}Журнал Відвідування{% endblock title %}
+
+
+
+{% block content %}
+
+
+                <!--Date-->
+                <nav class="calendarnav row justify-content-md-center">
+                    <a class="calendarnav-previous" href="#">&#8592;</a>
+                    <strong>November 2020</strong>
+                    <a class="calendarnav-next" href="#">&#8594;</a>
+                </nav>
+
+                <div class="table_horizontal">
+                    <table class="table table-hover table-striped table-bordered">
+                        <thead>
+                        <tr>
+                            <th class="bigger">#</th>
+                            <th class="bigger">Студент</th>
+                            <th>Mo<br>1</th>
+                            <th>Tu<br>2</th>
+                            <th>We<br>3</th>
+                            <th>Th<br>4</th>
+                            <th>Fr<br>5</th>
+                            <th>Sa<br>6</th>
+                            <th>Su<br>7</th>
+                            <th>Mo<br>8</th>
+                            <th>Tu<br>9</th>
+                            <th>We<br>10</th>
+                            <th>Th<br>11</th>
+                            <th>Fr<br>12</th>
+                            <th>Sa<br>13</th>
+                            <th>Su<br>14</th>
+                            <th>Mo<br>15</th>
+                            <th>Tu<br>16</th>
+                            <th>We<br>17</th>
+                            <th>Th<br>18</th>
+                            <th>Fr<br>19</th>
+                            <th>Sa<br>20</th>
+                            <th>Su<br>21</th>
+                            <th>Mo<br>22</th>
+                            <th>Tu<br>23</th>
+                            <th>We<br>24</th>
+                            <th>Th<br>25</th>
+                            <th>Fr<br>26</th>
+                            <th>Sa<br>27</th>
+                            <th>Su<br>28</th>
+                            <th>Mo<br>29</th>
+                            <th>Tu<br>30</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for stud in journal %}
+                        <tr>
+                            <td>{{ stud.id }}</td>
+                            <td><a href="{% url 'students_edit' stud.id %}">{{ stud.student }}</a></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                            <td><input type="checkbox"></td>
+                        </tr>
+                        {% endfor %}
+
+                        </tbody>
+                    </table>
+                 </div>
+
+                {% include 'students/pagination.html' %}
+
+
+{% endblock content %}

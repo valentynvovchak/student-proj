@@ -16,7 +16,9 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 
-from students import views as stud_views
+from students.views import stud_views
+from students.views import group_views
+from students.views import journal_views
 
 urlpatterns = [
     # Students urls
@@ -29,15 +31,19 @@ urlpatterns = [
     path('students/<int:sid>/delete/', stud_views.students_delete, name='students_delete'),
 
 
+
     # Groups urls
-    path('groups/', stud_views.groups_list, name='groups'),
+    path('groups/', group_views.groups_list, name='groups'),
 
-    path('groups/add/', stud_views.groups_add, name='groups_add'),
+    path('groups/add/', group_views.groups_add, name='groups_add'),
 
-    path('groups/<int:gid>/edit/', stud_views.groups_edit, name='groups_edit'),
+    path('groups/<int:gid>/edit/', group_views.groups_edit, name='groups_edit'),
 
-    path('groups/<int:gid>/delete/', stud_views.groups_delete, name='groups_delete'),
+    path('groups/<int:gid>/delete/', group_views.groups_delete, name='groups_delete'),
 
+
+    # Journal urls
+    path('journal/', journal_views.journal_list, name='journal_list'),
 
 
     path('admin/', admin.site.urls),
