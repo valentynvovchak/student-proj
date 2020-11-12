@@ -1,0 +1,232 @@
+[
+{
+    "model": "auth.user",
+    "fields": {
+        "password": "pbkdf2_sha256$216000$hR0dDa3MwCy5$72J7rUo+xhhXlu/Dea4ktuR7MfsqvDNRwJfU9LQVJnI=",
+        "last_login": "2020-11-10T20:10:01Z",
+        "is_superuser": true,
+        "username": "hanver",
+        "first_name": "Valentyn",
+        "last_name": "Vovchak",
+        "email": "valentyn.vovchak@gmail.com",
+        "is_staff": true,
+        "is_active": true,
+        "date_joined": "2020-11-10T20:05:17Z",
+        "groups": [],
+        "user_permissions": []
+    }
+},
+{
+    "model": "sessions.session",
+    "pk": "6g1fgsffkx6h1lelqdbcmd2xmdn1ctei",
+    "fields": {
+        "session_data": ".eJxVjMEOwiAQRP-FsyECpYBH734DWdhdqRpISnsy_rtt0oPeJvPezFtEWJcS105znFBchBKn3y5BflLdAT6g3pvMrS7zlOSuyIN2eWtIr-vh_h0U6GVbn4kVQwpMDDlsWStHDo1O1gW0o7KD98FoEzJ7y0gDuEwJ3ei0Bg7i8wUNDzi2:1kcZxp:CfuPuRwr5zgsPXCnBj57IWkXOeqkd0-ROXcWISHBaLE",
+        "expire_date": "2020-11-24T20:10:01.528Z"
+    }
+},
+{
+    "model": "students.student",
+    "pk": 1,
+    "fields": {
+        "first_name": "Валентин",
+        "last_name": "Вовчак",
+        "middle_name": "Олександрович",
+        "birthday": "2001-11-13",
+        "photo": "Valya.jpg",
+        "number": "3119036",
+        "notes": "Такий собі крутий студент.",
+        "student_group": null
+    }
+},
+{
+    "model": "students.student",
+    "pk": 2,
+    "fields": {
+        "first_name": "Дмитро",
+        "last_name": "Роман",
+        "middle_name": "Андрійович",
+        "birthday": "2020-11-10",
+        "photo": "",
+        "number": "3145933",
+        "notes": "",
+        "student_group": null
+    }
+},
+{
+    "model": "students.student",
+    "pk": 3,
+    "fields": {
+        "first_name": "Денис",
+        "last_name": "Старжевський",
+        "middle_name": "Владиславович",
+        "birthday": "2002-06-06",
+        "photo": "Denys.jpg",
+        "number": "3119088",
+        "notes": "",
+        "student_group": null
+    }
+},
+{
+    "model": "students.student",
+    "pk": 4,
+    "fields": {
+        "first_name": "Ельвіра",
+        "last_name": "Громова",
+        "middle_name": "Вадимівна",
+        "birthday": "2020-11-10",
+        "photo": "Elya.jpg",
+        "number": "3119101",
+        "notes": "",
+        "student_group": null
+    }
+},
+{
+    "model": "students.student",
+    "pk": 5,
+    "fields": {
+        "first_name": "Назарій",
+        "last_name": "Тучапець",
+        "middle_name": "Ігорович",
+        "birthday": "2020-11-10",
+        "photo": "",
+        "number": "3119089",
+        "notes": "",
+        "student_group": null
+    }
+},
+{
+    "model": "students.group",
+    "pk": 1,
+    "fields": {
+        "title": "ФЕІ-21",
+        "leader": 1,
+        "notes": "Група найкращих студентів."
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 1,
+    "fields": {
+        "action_time": "2020-11-10T20:12:06.516Z",
+        "user": [
+            "hanver"
+        ],
+        "content_type": [
+            "students",
+            "student"
+        ],
+        "object_id": "1",
+        "object_repr": "Student object (1)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e-\\u0431\\u0430\\u0442\\u044c\\u043a\\u043e\\u0432\\u0456\", \"\\u0414\\u0430\\u0442\\u0430 \\u043d\\u0430\\u0440\\u043e\\u0434\\u0436\\u0435\\u043d\\u043d\\u044f\", \"\\u0424\\u043e\\u0442\\u043e\", \"\\u0414\\u043e\\u0434\\u0430\\u0442\\u043a\\u043e\\u0432\\u0456 \\u043d\\u043e\\u0442\\u0430\\u0442\\u043a\\u0438\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 2,
+    "fields": {
+        "action_time": "2020-11-10T20:25:12.073Z",
+        "user": [
+            "hanver"
+        ],
+        "content_type": [
+            "students",
+            "student"
+        ],
+        "object_id": "3",
+        "object_repr": "Денис Старжевський",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 3,
+    "fields": {
+        "action_time": "2020-11-10T20:28:06.381Z",
+        "user": [
+            "hanver"
+        ],
+        "content_type": [
+            "students",
+            "student"
+        ],
+        "object_id": "4",
+        "object_repr": "Ельвіра Громова",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 4,
+    "fields": {
+        "action_time": "2020-11-10T20:30:33.644Z",
+        "user": [
+            "hanver"
+        ],
+        "content_type": [
+            "students",
+            "student"
+        ],
+        "object_id": "5",
+        "object_repr": "Назарій Тучапець",
+        "action_flag": 1,
+        "change_message": "[{\"added\": {}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 5,
+    "fields": {
+        "action_time": "2020-11-10T20:46:43.057Z",
+        "user": [
+            "hanver"
+        ],
+        "content_type": [
+            "students",
+            "student"
+        ],
+        "object_id": "2",
+        "object_repr": "Дмитро Роман",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u041f\\u043e-\\u0431\\u0430\\u0442\\u044c\\u043a\\u043e\\u0432\\u0456\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 6,
+    "fields": {
+        "action_time": "2020-11-10T20:47:49.425Z",
+        "user": [
+            "hanver"
+        ],
+        "content_type": [
+            "auth",
+            "user"
+        ],
+        "object_id": "1",
+        "object_repr": "hanver",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"Username\", \"First name\", \"Last name\"]}}]"
+    }
+},
+{
+    "model": "admin.logentry",
+    "pk": 7,
+    "fields": {
+        "action_time": "2020-11-12T13:38:09.573Z",
+        "user": [
+            "hanver"
+        ],
+        "content_type": [
+            "students",
+            "group"
+        ],
+        "object_id": "1",
+        "object_repr": "ФЕІ-21 (Валентин Вовчак)",
+        "action_flag": 2,
+        "change_message": "[{\"changed\": {\"fields\": [\"\\u0414\\u043e\\u0434\\u0430\\u0442\\u043a\\u043e\\u0432\\u0456 \\u043d\\u043e\\u0442\\u0430\\u0442\\u043a\\u0438\"]}}]"
+    }
+}
+]

@@ -23,22 +23,44 @@
     <!-- Start Students Listing -->
     <div>
         <table class="table table-hover table-striped">
+            {% with order_by=request.GET.order_by reverse=request.GET.reverse %}
             <thead>
                 <tr>
                     <th><a href="">№</a></th>
                     <th>Фото</th>
-                    <th><a href="">Прізвище &uarr;</a></th>
-                    <th><a href="#">Ім'я</a></th>
-                    <th><a href="#">№ Залікової</a></th>
+                    <th><a href="{% url 'home' %}?order_by=last_name{% if order_by == 'last_name' and reverse != '1' %}&amp;reverse=1{% endif %}">
+                        Прізвище
+                        {% if order_by == 'last_name' and reverse != '1' %}&uarr;
+                        {% elif order_by == 'last_name' and reverse == '1' %}&darr;
+                        {% endif %}
+                    </a></th>
+                    <th><a href="{% url 'home' %}?order_by=first_name{% if order_by == 'first_name' and reverse != '1' %}&amp;reverse=1{% endif %}">
+                        Ім'я
+                        {% if order_by == 'first_name' and reverse != '1' %}&uarr;
+                        {% elif order_by == 'first_name' and reverse == '1' %}&darr;
+                        {% endif %}
+                    </a></th>
+                    <th><a href="{% url 'home' %}?order_by=number{% if order_by == 'number' and reverse != '1' %}&amp;reverse=1{% endif %}">
+                        № Залікової
+                        {% if order_by == 'number' and reverse != '1' %}&uarr;
+                        {% elif order_by == 'number' and reverse == '1' %}&darr;
+                        {% endif %}
+                    </a></th>
                     <th>Дії</th>
                 </tr>
             </thead>
+            {% endwith %}
             <tbody>
             {% for student in students %}
                 <tr>
                     <td>{{ forloop.counter }}</td>
-                    <td><img height="60" width="47" src="{% static student.image %}"
+                    {% if student.photo %}
+                    <td><img height="60" width="47" src="{{ student.photo.url }}"
                              class="rounded-circle"></td>
+                    {% else %}
+                    <td><img style="opacity: 0.5;" width="47" src="{% static 'img/default.png' %}"
+                        class="rounded-circle"></td>
+                    {% endif %}
                     <td><a title="Редагувати" href="{% url 'students_edit' student.id %}">{{ student.last_name }}</a></td>
                     <td><a title="Редагувати" href="{% url 'students_edit' student.id %}">{{ student.first_name }}</a></td>
                     <td>{{student.number}}</td>

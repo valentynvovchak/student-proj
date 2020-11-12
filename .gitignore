@@ -7,3 +7,4 @@
 static/css/test.css
 static/test.html
 *__pycache__*
+*db.py
