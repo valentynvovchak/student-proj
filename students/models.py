@@ -36,7 +36,7 @@ class Group(models.Model):
 
     title = models.CharField(max_length=256, verbose_name='Назва')
 
-    leader = models.OneToOneField('Student', verbose_name='Староста', blank=True, null=True,on_delete=models.SET_NULL)
+    leader = models.OneToOneField('Student', verbose_name='Староста', blank=True, null=True, on_delete=models.SET_NULL)
 
     notes = models.TextField(blank=True, verbose_name='Додаткові нотатки')
 

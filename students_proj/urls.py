@@ -19,9 +19,8 @@ from django.urls import path
 from django.conf import settings
 from django.conf.urls.static import static
 
-from students.views import stud_views
-from students.views import group_views
-from students.views import journal_views
+from students.views import stud_views, group_views, journal_views, contact_admin_views
+
 
 urlpatterns = [
     # Students urls
@@ -47,6 +46,10 @@ urlpatterns = [
 
     # Journal urls
     path('journal/', journal_views.journal_list, name='journal_list'),
+
+
+    # Contact Admin Form
+    path('contact-admin/', contact_admin_views.contact_admin, name='contact_admin'),
 
 
     path('admin/', admin.site.urls),

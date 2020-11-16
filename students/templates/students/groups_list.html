@@ -28,20 +28,38 @@
     <!--Start Students Listing-->
     <div>
         <table class="table table-hover table-striped">
+            {% with order_by=request.GET.order_by reverse=request.GET.reverse %}
             <thead>
             <tr>
                 <th><a href="">№</a></th>
-                <th><a href="#">Назва</a></th>
-                <th><a href="#">Староста</a></th>
+                <th><a href="{% url 'groups' %}?order_by=title{% if order_by == 'title' and reverse != '1' %}&amp;reverse=1{% endif %}">
+                    Назва
+                    {% if order_by == 'title' and reverse != '1' %}&uarr;
+                    {% elif order_by == 'title' and reverse == '1' %}&darr;
+                    {% endif %}
+                </a></th>
+                <th><a href="{% url 'groups' %}?order_by=leader{% if order_by == 'leader' and reverse != '1' %}&amp;reverse=1{% endif %}">
+                    Староста
+                    {% if order_by == 'leader' and reverse != '1' %}&uarr;
+                    {% elif order_by == 'leader' and reverse == '1' %}&darr;
+                    {% endif %}
+                </a></th>
                 <th>Дії</th>
             </tr>
             </thead>
+            {% endwith %}
             <tbody>
             {% for group in groups %}
                 <tr>
                     <td>{{ forloop.counter }}</td>
-                    <td><a href="{% url 'groups_edit' group.id %}" title="Редагувати">{{ group.name }}</a></td>
-                    <td><a href="#" title="Редагувати">{{ group.leader }}</a></td>
+                    <td><a href="{% url 'groups_edit' group.id %}" title="Редагувати">{{ group.title }}</a></td>
+                    <td><a href="{% if group.leader %}{% url 'students_edit' group.leader.id %}{% endif %}" title="Редагувати">
+                         {% if group.leader %}
+                              {{ group.leader }}
+                           {% else %}
+                               Немає
+                           {% endif %}
+                    </a></td>
                     <td>
                         <div class="dropdown">
                             <button class="btn btn-primary dropdown-toggle" type="button"
