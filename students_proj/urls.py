@@ -28,9 +28,9 @@ urlpatterns = [
 
     path('students/add/', stud_views.students_add, name='students_add'),
 
-    path('students/<int:sid>/edit/', stud_views.students_edit, name='students_edit'),
+    path('students/<int:pk>/edit/', stud_views.StudentUpdateView.as_view(), name='students_edit'),
 
-    path('students/<int:sid>/delete/', stud_views.students_delete, name='students_delete'),
+    path('students/<int:pk>/delete/', stud_views.StudentDeleteView.as_view(), name='students_delete'),
 
 
 
@@ -39,9 +39,9 @@ urlpatterns = [
 
     path('groups/add/', group_views.groups_add, name='groups_add'),
 
-    path('groups/<int:gid>/edit/', group_views.groups_edit, name='groups_edit'),
+    path('groups/<int:pk>/edit/', group_views.GroupUpdateView.as_view(), name='groups_edit'),
 
-    path('groups/<int:gid>/delete/', group_views.groups_delete, name='groups_delete'),
+    path('groups/<int:pk>/delete/', group_views.GroupDeleteView.as_view(), name='groups_delete'),
 
 
     # Journal urls

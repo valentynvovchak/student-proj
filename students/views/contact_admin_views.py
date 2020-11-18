@@ -4,6 +4,8 @@ from django.core.mail import send_mail
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.urls import reverse
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Submit
 
 # Create your views here.
 
@@ -11,6 +13,27 @@ from django.urls import reverse
 #  Views for Students
 
 class ContactForm(forms.Form):
+
+    def __init__(self, *args, **kwargs):
+        # call original initializer
+        super().__init__(*args, **kwargs)
+
+        # this helper object allows us to customize form
+        self.helper = FormHelper(self)
+
+        # form tag attributes
+        self.helper.form_class = 'form-horizontal'
+        self.helper.form_method = 'post'
+        self.helper.form_action = reverse('contact_admin')
+
+        # twitter bootstrap styles
+        self.helper.help_text_inline = True
+        self.helper.html5_required = True
+        self.helper.label_class = 'col-sm-2 col-form-label'
+        self.helper.field_class = 'col-sm-10'
+
+        # form buttons
+        self.helper.add_input(Submit('send_button', 'Надіслати'))
 
     from_email = forms.EmailField(label='Ваша Емейл Адреса')
 
@@ -37,10 +60,10 @@ def contact_admin(request):
                 send_mail(subject, message, from_email, [settings.ADMIN_EMAIL])
 
             except Exception:
-                message = 'Під час відправки листа виникла непередбачувана помилка. Спробуйте скористатись даною формою пізніше.'
+                message = 'Під час відправки листа виникла непередбачувана помилка. Спробуйте скористатись даною формою пізніше.&amp;alert=danger'
 
             else:
-                message = 'Повідомлення успішно надіслане!'
+                message = 'Повідомлення успішно надіслане!&amp;alert=success'
 
             # redirect to same contact page with success message
             return HttpResponseRedirect(f"{reverse('contact_admin')}?status_message={message}")
@@ -49,5 +72,5 @@ def contact_admin(request):
         # if there was not POST render blank form
         form = ContactForm()
 
-        return render(request, 'contact_admin/form.html', {'form': form})
+    return render(request, 'contact_admin/form.html', {'form': form})
 

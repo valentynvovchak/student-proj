@@ -62,13 +62,13 @@
         <div class="col-sm-12">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link {% if home_url == request.path %}active{% endif %}" href="{% url 'home' %}">Студенти</a>
+                    <a class="nav-link {% if home_url == request.path %}active{% endif %}" href="{% url 'home' %}?order_by=last_name">Студенти</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if 'journal/' in request.path %}active{% endif %}" href="/journal">Відвідування</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if groups_url in request.path %}active{% endif %}" href="{% url 'groups' %}">Групи</a>
+                    <a class="nav-link {% if groups_url in request.path %}active{% endif %}" href="{% url 'groups' %}?order_by=title">Групи</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if contact_admin_url in request.path %}active{% endif %}"
@@ -87,7 +87,9 @@
             <!-- Status Message -->
             {% block status_message %}
                 {% if request.GET.status_message %}
-                    <div class="alert alert-{{request.GET.alert}}" role="alert">{{request.GET.status_message}}</div>
+                    <div class="alert alert-{% if request.GET.alert %}{{request.GET.alert}}{% else %}warning{% endif %}" role="alert">
+                        {{request.GET.status_message}}
+                    </div>
                 {% endif %}
             {% endblock status_message %}
 

@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'crispy_forms',               # crispy_forms must be added!
     'students',
 ]
 
@@ -103,7 +104,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'uk'
 
 TIME_ZONE = 'UTC'
 
@@ -126,10 +127,23 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MAX_UPLOAD_SIZE = 2097152
 
 
-
 # STATICFILES_DIRS = [
 #     "/home/special.polls.com/polls/static",
 #     "/home/polls.com/polls/static",
 #     "/opt/webfiles/common",
 # ]
 
+
+# email settings
+# please, set here you smtp server details and your admin email
+
+ADMIN_EMAIL = 'valiunyavovchak@gmail.com'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_HOST_USER = 'valiunyavovchak@gmail.com'
+EMAIL_HOST_PASSWORD = '131101valentyn2377'
+EMAIL_PORT = 465
+EMAIL_USE_TLS = False
+EMAIL_USE_SSL = True
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'  # settings of Django Crispy Forms
