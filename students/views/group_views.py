@@ -14,6 +14,7 @@ from crispy_forms.bootstrap import FormActions
 from crispy_forms.layout import Submit
 from crispy_forms.helper import FormHelper
 
+from ..util import paginate, get_current_group
 from students.models import Student, Group
 # Create your views here.
 
@@ -21,17 +22,26 @@ from students.models import Student, Group
 #  Views for Groups
 
 def groups_list(request):
-    groups = Group.objects.all()
-    students = Student.objects.all()
+    # check if we need to show only one group
+    current_group = get_current_group(request)
+    if current_group:
+        groups = [Group.objects.filter(pk=current_group.pk).first()]
+        context = {'groups': groups}
+    else:
+        # otherwise show only chosen group
+        groups = Group.objects.all()
 
-    # order group list
-    order_by = request.GET.get('order_by', '')
-    if order_by in ('title', 'leader'):
-        groups = groups.order_by(order_by)
-    if request.GET.get('reverse', '') == '1':
-        groups = groups.reverse()
+        # order group list
+        order_by = request.GET.get('order_by', '')
+        if order_by in ('title', 'leader'):
+            groups = groups.order_by(order_by)
+        if request.GET.get('reverse', '') == '1':
+            groups = groups.reverse()
 
-    return render(request, 'students/groups_list.html', {'groups': groups, 'students': students, })
+        context = {}
+        context = paginate(groups, 4, request, context, var_name='groups')
+
+    return render(request, 'students/groups_list.html', context)
 
 
 def groups_add(request):

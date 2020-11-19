@@ -39,7 +39,7 @@ h1, h2, h3, h4, h5, h6 {
 /* Table Styles */
 .table td {
     vertical-align: middle;
-    padding: 0.5rem;
+
 }
 
 
@@ -49,32 +49,50 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 /*Navs*/
-.calendarnav {
-    margin-bottom: 15px;
-}
 
-.calendarnav strong {
-    padding-left: 5px;
-    padding-right: 5px;
-}
 
 /*Tables*/
-.table_horizontal th, .table_horizontal td{
+.table_horizontal th{
     text-align: center;
 }
 
 /*STRIP*/
-
-
-.bigger {
-    font-size: 16px;
+.strip {
+    font-size: 14px;
+    font-weight: bolder;
 }
 
-th {
-    font-size: 14px;
+/* Form Styles */
+textarea,
+select,
+input,
+.custom-file,
+.input-group {
+    max-width: 300px;
+}
+
+/* Journal Table Styles */
+td.day-box,
+td.day-header {
+    padding: 0px 10px !important;
+    vertical-align: middle !important;
+    text-align: center;
 }
 
 .table th {
     padding: 0.1rem;
     vertical-align: middle;
 }
+
+#ajax-progress-indicator {
+    display: none;
+}
+
+/*a#fullname {*/
+/*    font-size: 12px;*/
+/*}*/
+
+/*td#td_fullname {*/
+/*    padding: 12px 1px !important;*/
+
+/*}*/

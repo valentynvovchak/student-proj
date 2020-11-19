@@ -14,7 +14,7 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, re_path
 
 from django.conf import settings
 from django.conf.urls.static import static
@@ -45,7 +45,7 @@ urlpatterns = [
 
 
     # Journal urls
-    path('journal/', journal_views.journal_list, name='journal_list'),
+    re_path(r'journal/(?:(?P<pk>\d+)/)?$', journal_views.JournalView.as_view(), name='journal'),
 
 
     # Contact Admin Form

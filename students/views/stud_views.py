@@ -16,14 +16,21 @@ from students_proj.settings import MAX_UPLOAD_SIZE
 from students.models import Student, Group
 
 from django.views.generic import UpdateView, DeleteView
+from ..util import paginate, get_current_group
 # Create your views here.
 
 
 #  Views for Students
 
 def students_list(request):
+    # check if we need to show only one group of students
+    current_group = get_current_group(request)
 
-    students = Student.objects.all()
+    if current_group:
+        students = Student.objects.filter(student_group=current_group)
+    else:
+        # otherwise show all students
+        students = Student.objects.all()
 
     # order students list
     order_by = request.GET.get('order_by', '')
@@ -35,23 +42,11 @@ def students_list(request):
     if request.GET.get('reverse', '') == '1':
         students = students.reverse()
 
-    # pagination
-    paginator = Paginator(students, 3)
-    page = request.GET.get('page')
+    # apply pagination, 3 students per page
+    context = {}
+    context = paginate(students, 6, request, context, var_name='students')
 
-    try:
-        students = paginator.page(page)
-
-    except PageNotAnInteger:
-        # If page is not an integer, deliver first page.
-        students = paginator.page(1)
-
-    except EmptyPage:
-        # If page is out of range (e.g. 9999), deliver
-        # last page of results.
-        students = paginator.page(paginator.num_pages)
-
-    return render(request, 'students/students_list.html', {'students': students})
+    return render(request, 'students/students_list.html', context)
 
 
 def students_add(request):

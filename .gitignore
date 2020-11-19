@@ -9,3 +9,4 @@ static/test.html
 *__pycache__*
 *db.py
 save
+old_pagination.html

@@ -69,6 +69,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'students_proj.context_processors.students_proc',
+                'students.context_processors.groups_processor',
             ],
         },
     },
@@ -124,7 +125,7 @@ MEDIA_URL = '/media/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
-MAX_UPLOAD_SIZE = 2097152
+MAX_UPLOAD_SIZE = 2097152  # 2MB
 
 
 # STATICFILES_DIRS = [
