@@ -1,0 +1,60 @@
+{% extends 'students/base.html' %}
+
+{% load i18n %}
+
+
+{% block meta_title %}Реєстрація{% endblock meta_title %}
+
+
+{% block title %}Зареєструйтесь{% endblock title %}
+
+
+{% block status_message %}
+    {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            {% if form.non_field_errors %}
+                {{ form.non_field_errors.as_text }}
+            {% else %}
+                Будь ласка, виправте наступні помилки
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}
+
+
+{% block content %}
+<form action="{% url 'account_signup' %}" method="post">
+
+    {% csrf_token %}
+    <input type="hidden" name="next" value="{% url 'home' %}">
+
+    <div class="form-group">
+        <label for="login">Ваш Логін</label>
+        <input type="text" class="form-control" id="login" name="username" value="">
+        {{ form.errors.username }}
+    </div>
+
+    <div class="form-group">
+        <label for="email">Ваш Емейл</label>
+        <input type="text" class="form-control" id="email" name="email" value="">
+        {{ form.errors.email }}
+    </div>
+
+    <div class="form-group">
+        <label for="password">Ваш Пароль</label>
+        <input type="password" class="form-control" name="password1" id="password" value="">
+        {{ form.errors.password1 }}
+    </div>
+
+    <div class="form-group">
+        <label for="password-confirm">Підтвердіть Пароль</label>
+        <input type="password" class="form-control" name="password2" id="password-confirm" value="">
+        {{ form.errors.password2 }}
+    </div>
+
+    <button type="submit" class="btn btn-primary">Зареєструватися</button>
+
+</form>
+
+
+{% endblock content %}

@@ -41,7 +41,14 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
+
+    # 3rd party apps
     'crispy_forms',               # crispy_forms must be added!
+    'allauth',
+    'allauth.account',
+
+    # project apps
     'students',
 ]
 
@@ -60,7 +67,7 @@ ROOT_URLCONF = 'students_proj.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -101,6 +108,19 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    # Needed to login by username in Django admin, regardless of `allauth`
+    'django.contrib.auth.backends.ModelBackend',
+
+    # `allauth` specific authentication methods, such as login by e-mail
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID = 1  # ідентифікатор сайту (для allauth!)
+
+LOGIN_REDIRECT_URL = 'home'   # Після вдалої автентифікації редіректимо користувача на список студентів
+
+ACCOUNT_LOGOUT_ON_GET = True  # Дозволити робити логаут за допомогою GET запиту
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.1/topics/i18n/

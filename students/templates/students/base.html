@@ -33,25 +33,36 @@
 
         {% block change_logo %}
         <!-- Logo -->
-        <div class="col-sm-8">
+        <div class="col-sm-6">
             <h1>Сервіс Обліку Студентів</h1>
         </div>
         {% endblock change_logo %}
 
-        {% block change_stud_menu %}
-        <!-- Group Selector -->
-        <div class="col-sm-4 d-flex" id="group-selector">
-            <label for="group"><strong>Група:</strong></label>
-            <select class="custom-select" name="group" id="group">
-                <option value="">Усі Студенти</option>
-                {% for group in GROUPS %}
-                    <option value="{{ group.id }}" {% if group.selected %}selected="1"{% endif %}>
-                        {{ group.title }}{% if group.leader %}, {{ group.leader }}{% endif %}
-                    </option>
-                {% endfor %}
-            </select>
-        </div>
-        {% endblock change_stud_menu %}
+        {% if user.is_authenticated %}
+            <!-- Group Selector -->
+            <div class="col-sm-4 d-flex" id="group-selector">
+                <label for="group"><strong>Група:</strong></label>
+                <select class="custom-select" name="group" id="group">
+                    <option value="">Усі Студенти</option>
+                    {% for group in GROUPS %}
+                        <option value="{{ group.id }}" {% if group.selected %}selected="1"{% endif %}>
+                            {{ group.title }}{% if group.leader %}, {{ group.leader }}{% endif %}
+                        </option>
+                    {% endfor %}
+                </select>
+            </div>
+            <!-- User's toolbar for authenticated users -->
+            <div class="col-sm-2 text-right my-auto" id="фгер-user-toolbar">
+                <span>{{ user.username }}</span>  |
+                <a href="{% url 'account_logout' %}">Вийти</a>  <!--Logout-->
+            </div>
+        {% else %}
+            <!-- User's toolbar for anonymous users -->
+            <div class="col-sm-6 text-right my-auto" id="anon-user-toolbar">
+                <a href="{% url 'account_login' %}">Увійти</a> |<!--Login-->
+                <a href="{% url 'account_signup' %}">Зареєструватися</a><!--Register-->
+            </div>
+        {% endif %}
     </div>
     <!-- End Header  -->
 

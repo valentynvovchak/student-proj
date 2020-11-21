@@ -1,0 +1,48 @@
+{% extends 'students/base.html' %}
+
+{% load i18n %}
+
+
+{% block meta_title %}Логування{% endblock meta_title %}
+
+
+{% block title %}Увійдіть{% endblock title %}
+
+
+{% block status_message %}
+    {% if form.errors %}
+        <div class="alert alert-danger" role="alert">
+            {% if form.non_field_errors %}
+                {{ form.non_field_errors.as_text }}
+            {% else %}
+                Будь ласка, виправте наступні помилки
+            {% endif %}
+        </div>
+    {% endif %}
+{% endblock %}
+
+
+{% block content %}
+    <form action="{% url 'account_login' %}" method="post">
+
+        {% csrf_token %}
+        <input type="hidden" name="next" value="{% url 'home' %}">
+
+        <div class="form-group">
+            <label for="login">Ваш Логін</label>
+            <input type="text" class="form-control" id="login" name="login" value="">
+            {{ form.login.errors }}
+        </div>
+
+        <div class="form-group">
+            <label for="password">Ваш Пароль</label>
+            <input type="password" class="form-control" name="password" id="password" value="">
+            {{ form.password.errors }}
+        </div>
+
+        <button type="submit" class="btn btn-primary">Увійти</button>
+
+    </form>
+
+
+{% endblock content %}
