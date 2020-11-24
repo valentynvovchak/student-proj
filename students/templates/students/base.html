@@ -1,5 +1,7 @@
 {% load static %}
 
+{% load socialaccount %}
+
 <!doctype html>
 <html lang="uk">
 <head>
@@ -52,13 +54,15 @@
                 </select>
             </div>
             <!-- User's toolbar for authenticated users -->
-            <div class="col-sm-2 text-right my-auto" id="фгер-user-toolbar">
-                <span>{{ user.username }}</span>  |
+            <div class="col-sm-2 text-right my-auto" id="auth-user-toolbar">
+                <span><a href="{% url 'profile' %}">{{ user.get_full_name|default:user.username }}</a></span>  |
                 <a href="{% url 'account_logout' %}">Вийти</a>  <!--Logout-->
             </div>
         {% else %}
             <!-- User's toolbar for anonymous users -->
             <div class="col-sm-6 text-right my-auto" id="anon-user-toolbar">
+                <a href="{% provider_login_url 'github' method='oauth2' next=request.path %}">via GitHub</a> |
+                <a href="{% provider_login_url 'facebook' method='oauth2' next=request.path %}">via Facebook</a> |
                 <a href="{% url 'account_login' %}">Увійти</a> |<!--Login-->
                 <a href="{% url 'account_signup' %}">Зареєструватися</a><!--Register-->
             </div>
@@ -78,16 +82,20 @@
                 <li class="nav-item">
                     <a class="nav-link {% if home_url == request.path %}active{% endif %}" href="{% url 'home' %}?order_by=last_name">Студенти</a>
                 </li>
+                {% if user.is_authenticated %}
                 <li class="nav-item">
                     <a class="nav-link {% if 'journal' in request.path %}active{% endif %}" href="{% url 'journal' %}">Відвідування</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link {% if groups_url in request.path %}active{% endif %}" href="{% url 'groups' %}?order_by=title">Групи</a>
                 </li>
+                {% endif %}
+                {% if perms.auth.add_user %}
                 <li class="nav-item">
                     <a class="nav-link {% if contact_admin_url in request.path %}active{% endif %}"
                        href="{% url 'contact_admin' %}">Контакт</a>
                 </li>
+                {% endif %}
             </ul>
         </div>
     </div>

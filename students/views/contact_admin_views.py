@@ -7,6 +7,7 @@ from django.urls import reverse
 from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 
+from django.contrib.auth.decorators import permission_required
 # Create your views here.
 
 
@@ -42,6 +43,7 @@ class ContactForm(forms.Form):
     message = forms.CharField(label='Текст повідомлення', max_length=2560, widget=forms.Textarea)
 
 
+@permission_required('auth.add_user', raise_exception=True)
 def contact_admin(request):
     #  check if form was posted
     if request.method == 'POST':

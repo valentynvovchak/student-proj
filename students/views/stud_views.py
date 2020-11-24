@@ -11,7 +11,8 @@ from crispy_forms.helper import FormHelper
 from crispy_forms.layout import Submit
 from django.forms import ModelForm
 
-
+from django.contrib.auth.decorators import login_required
+from django.utils.decorators import method_decorator
 from students_proj.settings import MAX_UPLOAD_SIZE
 from students.models import Student, Group
 
@@ -49,6 +50,7 @@ def students_list(request):
     return render(request, 'students/students_list.html', context)
 
 
+@login_required
 def students_add(request):
 
     # was form posted?:
@@ -174,6 +176,10 @@ class StudentUpdateView(UpdateView):
     template_name = 'students/students_edit.html'
     form_class = StudentUpdateForm
 
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
+
     def get_success_url(self):
         return f"{reverse('home')}?status_message=Студента успішно збережено!&amp;alert=success"
 
@@ -188,6 +194,10 @@ class StudentUpdateView(UpdateView):
 class StudentDeleteView(DeleteView):
     model = Student
     template_name = 'students/students_confirm_delete.html'
+
+    @method_decorator(login_required)
+    def dispatch(self, *args, **kwargs):
+        return super().dispatch(*args, **kwargs)
 
     def get_success_url(self):
         return f"{reverse('home')}?status_message=Студента успішно видалено!&amp;alert=success"

@@ -16,13 +16,17 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, re_path, include
 
+from django.views.generic import TemplateView
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth.decorators import login_required, permission_required
 
 from students.views import stud_views, group_views, journal_views, contact_admin_views
 
 
 urlpatterns = [
+    # User related urls
+    path('accounts/profile/', login_required(TemplateView.as_view(template_name='account/profile.html')), name='profile'),
     path('accounts/', include('allauth.urls')),
 
     # Students urls
@@ -37,17 +41,17 @@ urlpatterns = [
 
 
     # Groups urls
-    path('groups/', group_views.groups_list, name='groups'),
+    path('groups/', login_required(group_views.groups_list), name='groups'),
 
-    path('groups/add/', group_views.groups_add, name='groups_add'),
+    path('groups/add/', login_required(group_views.groups_add), name='groups_add'),
 
-    path('groups/<int:pk>/edit/', group_views.GroupUpdateView.as_view(), name='groups_edit'),
+    path('groups/<int:pk>/edit/', login_required(group_views.GroupUpdateView.as_view()), name='groups_edit'),
 
-    path('groups/<int:pk>/delete/', group_views.GroupDeleteView.as_view(), name='groups_delete'),
+    path('groups/<int:pk>/delete/', login_required(group_views.GroupDeleteView.as_view()), name='groups_delete'),
 
 
     # Journal urls
-    re_path(r'journal/(?:(?P<pk>\d+)/)?$', journal_views.JournalView.as_view(), name='journal'),
+    re_path(r'journal/(?:(?P<pk>\d+)/)?$', login_required(journal_views.JournalView.as_view()), name='journal'),
 
 
     # Contact Admin Form
