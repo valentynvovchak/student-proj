@@ -1,0 +1,89 @@
+{% extends 'students/base.html' %}
+
+{% load static %}
+
+
+
+{% block meta_title %}Додати Екзамен{% endblock meta_title %}
+
+
+{% block extra_css %}{% endblock extra_css %}
+
+
+{% block title %}Додати Екзамен{% endblock title %}
+
+
+{% block status_message %}
+    {% if errors %}
+    <div class="alert alert-danger" role="alert">
+        Будь ласка, виправте наступні помилки
+    </div>
+    {% endif %}
+{% endblock status_message %}
+
+{% block content %}
+    <form action="{% url 'exams_add' %}" enctype="multipart/form-data" method="post">
+        {% csrf_token %}
+
+        <div class="form-group row {% if errors.subject %}has-error{% endif %}">
+            <label for="subject" class="col-sm-2 col-form-label">Предмет*</label>
+
+            <div class="col-sm-10">
+                <input type="text" value="{{request.POST.subject}}" name="subject"
+                       id="subject" placeholder="Введіт назву дисципліни"
+                       class="form-control {% if errors.subject %}is-invalid{% endif %}">
+                <div class="invalid-feedback">{{errors.subject}}</div>
+            </div>
+        </div>
+
+        <div class="form-group row {% if errors.datetime %}has-error{% endif %}">
+            <label for="datetime" class="col-sm-2 col-form-label">Дата/час проведення*</label>
+
+            <div class="col-sm-10">
+                <input type="text" value="{{request.POST.datetime}}" name="datetime"
+                       id="datetime" placeholder="р-м-д г:х (2021-01-19 16:01)"
+                       class="form-control {% if errors.datetime %}is-invalid{% endif %}">
+                <div class="invalid-feedback">{{ errors.datetime }}</div>
+            </div>
+        </div>
+
+        <div class="form-group row {% if errors.teacher %}has-error{% endif %}">
+            <label for="teacher" class="col-sm-2 col-form-label">Викладач*</label>
+
+            <div class="col-sm-10">
+                <input type="text" name="teacher" id="teacher"
+                       value="{{request.POST.teacher}}"
+                       placeholder="Вкажіть викладача (доц.Хвищун І.О.)"
+                       class="form-control {% if errors.teacher %}is-invalid{% endif %}">
+                <div class="invalid-feedback">{{ errors.teacher }}</div>
+            </div>
+        </div>
+
+        <div class="form-group row {% if errors.exam_group %}has-error{% endif %}">
+            <label for="exam_group" class="col-sm-2 col-form-label">Група*</label>
+
+            <div class="col-sm-10">
+                <select name="exam_group" id="exam_group"
+                        class="custom-select {% if errors.exam_group %}is-invalid{% endif %}">
+                    <option value="">Виберіть групу</option>
+                    {% for group in groups %}
+                    <option value="{{group.id}}" {% if group.id == request.POST.exam_group|add:0 %}selected="selected"{% endif %}>
+                        {{group.title}}
+                    </option>
+                    {% endfor %}
+                </select>
+                <div class="invalid-feedback">{{ errors.exam_group }}</div>
+            </div>
+        </div>
+
+        <div class="form-group row">
+            <label class="col-sm-2 col-form-label"></label>
+
+            <div class="col-sm-10">
+                <input type="submit" value="Додати" name="add_button" class="btn btn-primary">
+                <button type="submit" name="cancel_button" class="btn btn-link">Скасувати</button>
+            </div>
+        </div>
+
+    </form>
+{% endblock content %}

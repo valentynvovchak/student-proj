@@ -39,7 +39,7 @@ def groups_list(request):
             groups = groups.reverse()
 
         context = {}
-        context = paginate(groups, 4, request, context, var_name='groups')
+        context = paginate(groups, 6, request, context, var_name='groups')
 
     return render(request, 'students/groups_list.html', context)
 

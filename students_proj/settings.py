@@ -14,6 +14,9 @@ import os
 from pathlib import Path
 from students_proj import db  # Якщо у вас цей рядок - помилка, то вам слід додати спеціально приховане поле
 #                               DATABASES у директорію students_proj
+from students_proj.db import SOCIALACCOUNT_PROVIDERS, ADMIN_EMAIL
+from students_proj.db import EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_PORT, EMAIL_HOST, EMAIL_USE_SSL, EMAIL_USE_TLS
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -57,23 +60,23 @@ INSTALLED_APPS = [
 ]
 
 # Provider specific settings
-SOCIALACCOUNT_PROVIDERS = {
-    'facebook': {
-        # For each OAuth based provider, either add a ``SocialApp``
-        # (``socialaccount`` app) containing the required client
-        # credentials, or list them here:
-        'APP': {
-            'client_id': '1638384499666493',
-            'secret': 'd4ef2bfb514fd7ec6bd2d48f70df9966',
-        }
-    },
-    'github': {
-        'APP': {
-            'client_id': 'c4ff8fa1f2c04611895c',
-            'secret': '0c76167593cf349277ef1669d5f374d0b1f2bf3c',
-        }
-    }
-}
+# SOCIALACCOUNT_PROVIDERS = {
+#     'facebook': {
+#         # For each OAuth based provider, either add a ``SocialApp``
+#         # (``socialaccount`` app) containing the required client
+#         # credentials, or list them here:
+#         'APP': {
+#             'client_id': '********************',
+#             'secret': '******************************',
+#         }
+#     },
+#     'github': {
+#         'APP': {
+#             'client_id': '**********************',
+#             'secret': '***********************************',
+#         }
+#     }
+# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -182,13 +185,13 @@ MAX_UPLOAD_SIZE = 2097152  # 2MB
 # email settings
 # please, set here you smtp server details and your admin email
 
-ADMIN_EMAIL = 'valiunyavovchak@gmail.com'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'valiunyavovchak@gmail.com'
-EMAIL_HOST_PASSWORD = '131101valentyn2377'
-EMAIL_PORT = 465
-EMAIL_USE_TLS = False
-EMAIL_USE_SSL = True
+# ADMIN_EMAIL = '****************@gmail.com'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_HOST_USER = '**************@gmail.com'
+# EMAIL_HOST_PASSWORD = '*********************'
+# EMAIL_PORT = 465
+# EMAIL_USE_TLS = False
+# EMAIL_USE_SSL = True
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'  # settings of Django Crispy Forms

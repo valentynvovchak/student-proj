@@ -16,6 +16,7 @@ from django.utils.decorators import method_decorator
 from students_proj.settings import MAX_UPLOAD_SIZE
 from students.models import Student, Group
 
+
 from django.views.generic import UpdateView, DeleteView
 from ..util import paginate, get_current_group
 # Create your views here.
@@ -140,51 +141,54 @@ def students_add(request):
         return render(request, 'students/students_add.html', {'groups': Group.objects.all().order_by('title')})
 
 
-class StudentUpdateForm(ModelForm):
+class StudentUpdateForm(ModelForm):  # Унаслідуємо форму від ModelForm - Django клас, який базується на моделях
 
-    class Meta:
-        model = Student
-        fields = '__all__'
+    class Meta:  # Мета-дані
+        model = Student     # Вказуємо модель для редагування
+        fields = '__all__'  # Будемо редагувати усі без винятку поля моделі студента
 
-    def __init__(self, *args, **kwargs):
-        # call original initializer
+    def __init__(self, *args, **kwargs):  # Модуль Django Crispy forms реалізовується у конструкторі класу форми
+        # викликати оригінальний ініціалайзер
         super().__init__(*args, **kwargs)
 
-        # this helper object allows us to customize form
+        # цей helper об'єкт дозволяє нам катомізувати форму
         self.helper = FormHelper(self)
 
-        # set form tag attributes
+        # втсанослюємо атрибути для тегу форми
         self.helper.form_class = 'form-horizontal'
         self.helper.form_action = reverse('students_edit', kwargs={'pk': kwargs['instance'].id})
         self.helper.form_method = 'post'
 
-        # set form field properties
+        # встановлюємо властивості полів форми
         self.helper.help_text_inline = True
         self.helper.html5_required = True
         self.helper.label_class = 'col-sm-2 col-form-label'
         self.helper.field_class = 'col-sm-10'
 
-        # add buttons
+        # додаємо кнопки Зберегти та Скасувати
         self.helper.layout.append(FormActions(
             Submit('add_button', 'Зберегти'),
             Submit('cancel_button', 'Скасувати', css_class='btn-danger'),
         ))
 
 
-class StudentUpdateView(UpdateView):
+class StudentUpdateView(UpdateView):  # використовуємо вбудовані в Django класи, які базуються на в'юшках
+                                      # (Class Based Views)
     model = Student
     template_name = 'students/students_edit.html'
     form_class = StudentUpdateForm
 
-    @method_decorator(login_required)
-    def dispatch(self, *args, **kwargs):
+    @method_decorator(login_required)  # Не даємо доступ до форми не залогованим користувачам
+    def dispatch(self, *args, **kwargs):  # розкидає запити на різні методи класу в’юшки взалежності від типу запиту
         return super().dispatch(*args, **kwargs)
 
-    def get_success_url(self):
+    def get_success_url(self):  # в разі успішного редгуання студента редіректимось на домашню сторінку
         return f"{reverse('home')}?status_message=Студента успішно збережено!&amp;alert=success"
 
-    def post(self, request, *args, **kwargs):
-        if request.POST.get('cancel_button') is not None:
+    # request - об'єкт запиту
+    def post(self, request, *args, **kwargs):  # всю важку роботу (валідація даних, збереження студента, підго-
+        # товка помилок при некоректних даних) для нас зробить метод “post”  батьківського класу.
+        if request.POST.get('cancel_button') is not None:  # Якщо не клікнули на кнопку Скасувати
             return HttpResponseRedirect(f"{reverse('home')}?status_message=Редагування студента відмінено!&amp;alert=warning")
 
         else:

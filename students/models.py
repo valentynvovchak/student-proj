@@ -100,3 +100,26 @@ class MonthJournal(models.Model):
     def __str__(self):
         return f"{self.student.last_name}: {self.date.month}, {self.date.year}"
 
+
+# class ExamGroup(models.Model):
+#     exam = models.ForeignKey('Group', verbose_name='Екзамен', blank=False, on_delete=models.PROTECT)
+#     group = models.ForeignKey('Exam', verbose_name='Група', blank=False, on_delete=models.PROTECT)
+
+
+class Exam(models.Model):
+    """Exam Model"""
+
+    subject = models.CharField(max_length=120, verbose_name='Назва дисципліни')
+
+    datetime = models.DateTimeField(verbose_name='Дата/час проведення')
+
+    teacher = models.CharField(max_length=150, verbose_name='Викладач')
+
+    exam_group = models.ForeignKey('Group', verbose_name='Група', blank=False, null=True, on_delete=models.PROTECT)
+
+    class Meta:
+        verbose_name = 'Екзамен'
+        verbose_name_plural = 'Екзамени'
+
+    def __str__(self):
+        return f"{self.subject} ({self.teacher})"

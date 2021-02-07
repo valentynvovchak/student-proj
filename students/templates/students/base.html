@@ -61,8 +61,8 @@
         {% else %}
             <!-- User's toolbar for anonymous users -->
             <div class="col-sm-6 text-right my-auto" id="anon-user-toolbar">
-                <a href="{% provider_login_url 'github' method='oauth2' next=request.path %}">via GitHub</a> |
-                <a href="{% provider_login_url 'facebook' method='oauth2' next=request.path %}">via Facebook</a> |
+                <a href="{% provider_login_url 'github' method='oauth2' next=request.path %}">через GitHub</a> |
+                <!--<a href="{% provider_login_url 'facebook' method='oauth2' next=request.path %}">через Facebook</a> |-->
                 <a href="{% url 'account_login' %}">Увійти</a> |<!--Login-->
                 <a href="{% url 'account_signup' %}">Зареєструватися</a><!--Register-->
             </div>
@@ -73,6 +73,7 @@
 
     {% url 'home' as home_url %}    <!-- Змінні Шаблонізатора -->
     {% url 'groups' as groups_url %}
+    {% url 'exams' as exams_url %}  <!-- URL Сторінки Екзаменів -->
     {% url 'contact_admin' as contact_admin_url %}
 
     <!-- Start SubHeader -->
@@ -80,14 +81,21 @@
         <div class="col-sm-12">
             <ul class="nav nav-tabs">
                 <li class="nav-item">
-                    <a class="nav-link {% if home_url == request.path %}active{% endif %}" href="{% url 'home' %}?order_by=last_name">Студенти</a>
+                    <a class="nav-link {% if home_url == request.path %}active{% endif %}"
+                       href="{% url 'home' %}?order_by=last_name">Студенти</a>
                 </li>
                 {% if user.is_authenticated %}
                 <li class="nav-item">
-                    <a class="nav-link {% if 'journal' in request.path %}active{% endif %}" href="{% url 'journal' %}">Відвідування</a>
+                    <a class="nav-link {% if 'journal' in request.path %}active{% endif %}"
+                       href="{% url 'journal' %}">Відвідування</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link {% if groups_url in request.path %}active{% endif %}" href="{% url 'groups' %}?order_by=title">Групи</a>
+                    <a class="nav-link {% if groups_url in request.path %}active{% endif %}"
+                       href="{% url 'groups' %}?order_by=title">Групи</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if exams_url in request.path %}active{% endif %}"
+                       href="{% url 'exams' %}?order_by=datetime">Екзамени</a>
                 </li>
                 {% endif %}
                 {% if perms.auth.add_user %}

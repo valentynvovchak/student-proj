@@ -1,0 +1,92 @@
+{% extends 'students/base.html' %}
+
+{% load static %}
+
+
+
+{% block meta_title %}Екзамени{% endblock meta_title %}
+
+
+{% block extra_css %}
+<!--<link rel="stylesheet" href="{% static 'css/main.css' %}">-->
+{% endblock extra_css %}
+
+
+{% block title %}Список Екзаменів{% endblock title %}
+
+
+{% block content %}
+    <!-- Add Exam Button -->
+    <a class="btn btn-primary" href="{% url 'exams_add' %}" role="button">Додати Екзамен</a>
+
+    <!-- Start Students Listing -->
+    <div>
+        <table class="table table-hover table-striped">
+            {% with order_by=request.GET.order_by reverse=request.GET.reverse %}
+            <thead>
+            <tr>
+                <th><a href="">№</a></th>
+                <th><a href="{% url 'exams' %}?order_by=subject{% if order_by == 'subject' and reverse != '1' %}&amp;reverse=1{% endif %}">
+                    Предмет
+                    {% if order_by == 'subject' and reverse != '1' %}&uarr;
+                    {% elif order_by == 'subject' and reverse == '1' %}&darr;
+                    {% endif %}</a></th>
+                <th><a href="{% url 'exams' %}?order_by=datetime{% if order_by == 'datetime' and reverse != '1' %}&amp;reverse=1{% endif %}">
+                    Дата/час проведення
+                    {% if order_by == 'datetime' and reverse != '1' %}&uarr;
+                    {% elif order_by == 'datetime' and reverse == '1' %}&darr;
+                    {% endif %}</a></th>
+                <th><a href="{% url 'exams' %}?order_by=teacher{% if order_by == 'teacher' and reverse != '1' %}&amp;reverse=1{% endif %}">
+                    Викладач
+                    {% if order_by == 'teacher' and reverse != '1' %}&uarr;
+                    {% elif order_by == 'teacher' and reverse == '1' %}&darr;
+                    {% endif %}</a></th>
+                <th><a href="">Група</a></th>
+                <th>Дії</th>
+            </tr>
+            </thead>
+            {% endwith %}
+            <tbody>
+            {% for exam in exams %}
+            <tr>
+                <td>
+                    {% if is_paginated %}
+                    {{ page_obj.start_index|add:forloop.counter|add:"-1" }}
+                    {% else %}
+                    {{ forloop.counter }}
+                    {% endif %}
+                </td>
+
+                <td>{{ exam.subject }}</td>
+
+                <td>{{ exam.datetime }}</td>
+
+                <td><a href="#">{{ exam.teacher }}</a></td>
+
+                <td><a href="{% url 'groups_edit' exam.exam_group.id %}">{{ exam.exam_group }}</a></td>
+
+                <td>
+                    <div class="dropdown">
+                        <button type="button" class="btn btn-primary dropdown-toggle"
+                                data-toggle="dropdown">
+                            Дія
+                        </button>
+
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item" href="#">Результати</a>
+                            <a class="dropdown-item" href="#">Редагувати</a>
+                            <a class="dropdown-item" href="#">Видалити</a>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+
+        {% include 'students/pagination.html' %}
+    </div>
+
+    <!-- End Exam Listing -->
+
+{% endblock content %}

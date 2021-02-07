@@ -21,7 +21,7 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib.auth.decorators import login_required, permission_required
 
-from students.views import stud_views, group_views, journal_views, contact_admin_views
+from students.views import stud_views, group_views, exam_views, journal_views, contact_admin_views
 
 
 urlpatterns = [
@@ -31,23 +31,21 @@ urlpatterns = [
 
     # Students urls
     path('', stud_views.students_list, name='home'),
-
     path('students/add/', stud_views.students_add, name='students_add'),
-
     path('students/<int:pk>/edit/', stud_views.StudentUpdateView.as_view(), name='students_edit'),
-
     path('students/<int:pk>/delete/', stud_views.StudentDeleteView.as_view(), name='students_delete'),
 
 
 
     # Groups urls
     path('groups/', login_required(group_views.groups_list), name='groups'),
-
     path('groups/add/', login_required(group_views.groups_add), name='groups_add'),
-
     path('groups/<int:pk>/edit/', login_required(group_views.GroupUpdateView.as_view()), name='groups_edit'),
-
     path('groups/<int:pk>/delete/', login_required(group_views.GroupDeleteView.as_view()), name='groups_delete'),
+
+    # Exams urls
+    path('exams/', login_required(exam_views.exams_list), name='exams'),
+    path('exams/add/', login_required(exam_views.exams_add), name='exams_add'),
 
 
     # Journal urls
@@ -59,7 +57,6 @@ urlpatterns = [
 
 
     path('admin/', admin.site.urls),
-
 
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
