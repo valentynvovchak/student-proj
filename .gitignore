@@ -10,3 +10,5 @@ static/test.html
 *db.py
 save
 old_pagination.html
+students_proj/env_settings.py
+backup_data.json

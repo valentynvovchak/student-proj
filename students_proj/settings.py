@@ -14,10 +14,16 @@ import os
 from pathlib import Path
 from students_proj import db  # Якщо у вас цей рядок - помилка, то вам слід додати спеціально приховане поле
 #                               DATABASES у директорію students_proj
-from students_proj.db import SOCIALACCOUNT_PROVIDERS, ADMIN_EMAIL
-from students_proj.db import EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_PORT, EMAIL_HOST, EMAIL_USE_SSL, EMAIL_USE_TLS
+from students_proj.env_settings import SOCIALACCOUNT_PROVIDERS, ADMIN_EMAIL, DATABASES
+from students_proj.env_settings import EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_PORT,\
+    EMAIL_HOST, EMAIL_USE_SSL, EMAIL_USE_TLS
 
+try:
+    from .env_settings import STATIC_ROOT
+except ImportError:
+    pass
 
+DATABASES = DATABASES  # додаєте свою базу даних.
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -27,13 +33,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = '5^4owm4mg12gu_tkb%g@^kg&tkn*@@(s9+xe9p_3k8$+%ex9@)'
+from .env_settings import SECRET_KEY
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['localhost', '127.0.0.1']
 
+# Admins
+ADMINS = (('Valentyn', 'valentyn.vovchak@gmail.com'),)
+MANAGERS = (('Valiunya', 'valiunyavovchak@gmail.com'),)
 
 # Application definition
 
@@ -114,8 +123,6 @@ WSGI_APPLICATION = 'students_proj.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = db.DATABASES  # додаєте свою базу даних.
-
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
 
@@ -167,9 +174,9 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 MEDIA_URL = '/media/'
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 MAX_UPLOAD_SIZE = 2097152  # 2MB
