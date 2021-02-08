@@ -12,8 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import os
 from pathlib import Path
-from students_proj import db  # Якщо у вас цей рядок - помилка, то вам слід додати спеціально приховане поле
-#                               DATABASES у директорію students_proj
+
 from students_proj.env_settings import SOCIALACCOUNT_PROVIDERS, ADMIN_EMAIL, DATABASES
 from students_proj.env_settings import EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_PORT,\
     EMAIL_HOST, EMAIL_USE_SSL, EMAIL_USE_TLS
