@@ -7,7 +7,7 @@ msg = "Set the %s environment variable"
 
 def get_env_var(var_name):
     try:
-        return os.environ[var_name]
+        return os.environ.get(var_name)
     except KeyError:
         error_msg = msg % var_name
         raise ImproperlyConfigured(error_msg)
