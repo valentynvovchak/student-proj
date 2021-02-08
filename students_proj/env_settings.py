@@ -1,6 +1,7 @@
 import os
 from django.core.exceptions import ImproperlyConfigured
 
+
 msg = "Set the %s environment variable"
 
 
@@ -33,7 +34,7 @@ GITHUB_SECRET = get_env_var("GITHUB_SECRET_STUDENTS")
 
 ADMIN_EMAIL_ST = get_env_var("ADMIN_EMAIL_STUDENTS")
 EMAIL_HOST_ST = 'smtp.sendgrid.net'
-EMAIL_HOST_USER_ST= 'apikey'
+EMAIL_HOST_USER_ST = 'apikey'
 EMAIL_HOST_PASSWORD_ST = get_env_var("EMAIL_HOST_PASSWORD_STUDENTS")
 EMAIL_PORT_ST = 587
 EMAIL_USE_TLS_ST = True
