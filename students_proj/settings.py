@@ -12,17 +12,20 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 import os
 from pathlib import Path
+from .env_settings import DB_NAME, DB_USER, DB_PASSWORD, FACEBOOK_SECRET, FACEBOOK_CLIENT_ID\
+     , GITHUB_SECRET, GITHUB_CLIENT_ID, ADMIN_EMAIL_ST, EMAIL_HOST_ST, EMAIL_HOST_USER_ST\
+    , EMAIL_HOST_PASSWORD_ST, EMAIL_USE_SSL_ST, EMAIL_USE_TLS_ST, EMAIL_PORT_ST
 
-from students_proj.env_settings import SOCIALACCOUNT_PROVIDERS, ADMIN_EMAIL, DATABASES
-from students_proj.env_settings import EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, EMAIL_PORT,\
-    EMAIL_HOST, EMAIL_USE_SSL, EMAIL_USE_TLS
+from .env_settings import SECRET_KEY_ST
 
-try:
-    from .env_settings import STATIC_ROOT
-except ImportError:
-    pass
+SECRET_KEY = SECRET_KEY_ST
 
-DATABASES = DATABASES  # додаєте свою базу даних.
+
+# local.py
+
+# FB_API_KEY = get_env_var("FB_API_KEY")
+# os.environ["Secret Key"]
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -32,10 +35,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-from .env_settings import SECRET_KEY
+
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'students-project-database.herokuapp.com']
 
@@ -67,24 +70,6 @@ INSTALLED_APPS = [
     'students_proj',
 ]
 
-# Provider specific settings
-# SOCIALACCOUNT_PROVIDERS = {
-#     'facebook': {
-#         # For each OAuth based provider, either add a ``SocialApp``
-#         # (``socialaccount`` app) containing the required client
-#         # credentials, or list them here:
-#         'APP': {
-#             'client_id': '********************',
-#             'secret': '******************************',
-#         }
-#     },
-#     'github': {
-#         'APP': {
-#             'client_id': '**********************',
-#             'secret': '***********************************',
-#         }
-#     }
-# }
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -189,16 +174,49 @@ MAX_UPLOAD_SIZE = 2097152  # 2MB
 # ]
 
 
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': DB_NAME,
+        'USER': DB_USER,
+        'PASSWORD': DB_PASSWORD,
+        'HOST': 'localhost',
+        'PORT': '5432',
+    }
+}
+
+# Provider specific settings
+
+
+SOCIALACCOUNT_PROVIDERS = {
+    'facebook': {
+        # For each OAuth based provider, either add a ``SocialApp``
+        # (``socialaccount`` app) containing the required client
+        # credentials, or list them here:
+        'APP': {
+            'client_id': FACEBOOK_CLIENT_ID,
+            'secret': FACEBOOK_SECRET,
+        }
+    },
+    'github': {
+        'APP': {
+            'client_id': GITHUB_CLIENT_ID,
+            'secret': GITHUB_SECRET,
+        }
+    }
+}
+
+
 # email settings
 # please, set here you smtp server details and your admin email
 
-# ADMIN_EMAIL = '****************@gmail.com'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_HOST_USER = '**************@gmail.com'
-# EMAIL_HOST_PASSWORD = '*********************'
-# EMAIL_PORT = 465
-# EMAIL_USE_TLS = False
-# EMAIL_USE_SSL = True
+ADMIN_EMAIL = ADMIN_EMAIL_ST
+EMAIL_HOST = EMAIL_HOST_ST
+EMAIL_HOST_USER = EMAIL_HOST_USER_ST
+EMAIL_HOST_PASSWORD = EMAIL_HOST_PASSWORD_ST
+EMAIL_PORT = EMAIL_PORT_ST
+EMAIL_USE_TLS = EMAIL_USE_TLS_ST
+EMAIL_USE_SSL = EMAIL_USE_SSL_ST
 
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'  # settings of Django Crispy Forms
